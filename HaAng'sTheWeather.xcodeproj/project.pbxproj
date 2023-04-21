@@ -16,6 +16,7 @@
 		112E621C29DD4E42005F5A07 /* HaAng_sTheWeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E621B29DD4E42005F5A07 /* HaAng_sTheWeatherUITestsLaunchTests.swift */; };
 		112E622A29DD54AF005F5A07 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 112E622929DD54AF005F5A07 /* Image.xcassets */; };
 		1199180429F2CB1400DCE576 /* BlurStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199180329F2CB1400DCE576 /* BlurStackView.swift */; };
+		1199180629F2D08800DCE576 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199180529F2D08800DCE576 /* ForecastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		112E621B29DD4E42005F5A07 /* HaAng_sTheWeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaAng_sTheWeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		112E622929DD54AF005F5A07 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		1199180329F2CB1400DCE576 /* BlurStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurStackView.swift; sourceTree = "<group>"; };
+		1199180529F2D08800DCE576 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				112E620029DD4E41005F5A07 /* ContentView.swift */,
 				112E620229DD4E42005F5A07 /* Assets.xcassets */,
 				1199180329F2CB1400DCE576 /* BlurStackView.swift */,
+				1199180529F2D08800DCE576 /* ForecastView.swift */,
 				112E620429DD4E42005F5A07 /* Preview Content */,
 			);
 			path = "HaAng'sTheWeather";
@@ -275,6 +278,7 @@
 				112E620129DD4E41005F5A07 /* ContentView.swift in Sources */,
 				112E61FF29DD4E41005F5A07 /* HaAng_sTheWeatherApp.swift in Sources */,
 				1199180429F2CB1400DCE576 /* BlurStackView.swift in Sources */,
+				1199180629F2D08800DCE576 /* ForecastView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
