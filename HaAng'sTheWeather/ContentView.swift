@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var topOffset: CGFloat = 0
     
     var body: some View {
         ZStack{
@@ -21,7 +20,7 @@ struct ContentView: View {
             }
             .ignoresSafeArea()
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack {
                     Text("포항시")
                         .font(.title)
@@ -37,12 +36,9 @@ struct ContentView: View {
                     }
                 }
                 
-                VStack(spacing: 0) {
+                BlurStackView{
                     Text("현재 청명한 날씨입니다.")
-                        .frame(maxWidth: .infinity)
-                        .background(.ultraThinMaterial)
-                        .zIndex(1)
-                    Divider()
+                } contentView: {
                     HStack {
                         VStack {
                             Text("지금")
@@ -65,62 +61,175 @@ struct ContentView: View {
                             Text("12°")
                         }
                     }
-                        .frame(maxWidth: .infinity)
-                        .background(.ultraThinMaterial)
-                        .offset(y: topOffset >= 200 ? 0 : topOffset - 200)
-                        .zIndex(0)
-                        .clipped()
                 }
-                .offset(y: topOffset >= 200 ? 0 : -(topOffset - 200))
-                .background(
-                    GeometryReader(content: { geomtry ->
-                        Color in
-                        
-                        let minY = geomtry.frame(in: .global).minY
-                        
-                        DispatchQueue.main.async {
-                            topOffset = minY
-                        }
-                        
-                        return Color.clear
-                    })
-                )
-                .padding()
                 
-                VStack {
+                
+                BlurStackView{
                     HStack {
                         Image(systemName: "calendar")
                         Text("10일간의 일기예보")
                     }
-                    Divider()
-                    HStack {
-                        Text("오늘")
-                        Image(systemName: "sun.max.fill")
-                        Text("12°")
-                        Text("18°")
-                    }
-                    HStack {
-                        Text("토")
-                        Image(systemName: "sun.max.fill")
-                        Text("10°")
-                        Text("16°")
-                    }
-                    HStack {
-                        Text("일")
-                        Image(systemName: "cloud.fill")
-                        Text("8°")
-                        Text("7°")
-                    }
-                    HStack {
-                        Text("월")
-                        Image(systemName: "cloud.fill")
-                        Text("9°")
-                        Text("16°")
+                } contentView: {
+                    VStack {
+                        HStack {
+                            Text("오늘")
+                            Image(systemName: "sun.max.fill")
+                            Text("12°")
+                            Text("18°")
+                        }
+                        HStack {
+                            Text("토")
+                            Image(systemName: "sun.max.fill")
+                            Text("10°")
+                            Text("16°")
+                        }
+                        HStack {
+                            Text("일")
+                            Image(systemName: "cloud.fill")
+                            Text("8°")
+                            Text("7°")
+                        }
+                        HStack {
+                            Text("월")
+                            Image(systemName: "cloud.fill")
+                            Text("9°")
+                            Text("16°")
+                        }
                     }
                 }
-                .padding()
-                .background(.purple)
-                .opacity(0.8)
+                BlurStackView{
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text("10일간의 일기예보")
+                    }
+                } contentView: {
+                    VStack {
+                        HStack {
+                            Text("오늘")
+                            Image(systemName: "sun.max.fill")
+                            Text("12°")
+                            Text("18°")
+                        }
+                        HStack {
+                            Text("토")
+                            Image(systemName: "sun.max.fill")
+                            Text("10°")
+                            Text("16°")
+                        }
+                        HStack {
+                            Text("일")
+                            Image(systemName: "cloud.fill")
+                            Text("8°")
+                            Text("7°")
+                        }
+                        HStack {
+                            Text("월")
+                            Image(systemName: "cloud.fill")
+                            Text("9°")
+                            Text("16°")
+                        }
+                    }
+                }
+                BlurStackView{
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text("10일간의 일기예보")
+                    }
+                } contentView: {
+                    VStack {
+                        HStack {
+                            Text("오늘")
+                            Image(systemName: "sun.max.fill")
+                            Text("12°")
+                            Text("18°")
+                        }
+                        HStack {
+                            Text("토")
+                            Image(systemName: "sun.max.fill")
+                            Text("10°")
+                            Text("16°")
+                        }
+                        HStack {
+                            Text("일")
+                            Image(systemName: "cloud.fill")
+                            Text("8°")
+                            Text("7°")
+                        }
+                        HStack {
+                            Text("월")
+                            Image(systemName: "cloud.fill")
+                            Text("9°")
+                            Text("16°")
+                        }
+                    }
+                }
+                BlurStackView{
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text("10일간의 일기예보")
+                    }
+                } contentView: {
+                    VStack {
+                        HStack {
+                            Text("오늘")
+                            Image(systemName: "sun.max.fill")
+                            Text("12°")
+                            Text("18°")
+                        }
+                        HStack {
+                            Text("토")
+                            Image(systemName: "sun.max.fill")
+                            Text("10°")
+                            Text("16°")
+                        }
+                        HStack {
+                            Text("일")
+                            Image(systemName: "cloud.fill")
+                            Text("8°")
+                            Text("7°")
+                        }
+                        HStack {
+                            Text("월")
+                            Image(systemName: "cloud.fill")
+                            Text("9°")
+                            Text("16°")
+                        }
+                    }
+                }
+                BlurStackView{
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text("10일간의 일기예보")
+                    }
+                } contentView: {
+                    VStack {
+                        HStack {
+                            Text("오늘")
+                            Image(systemName: "sun.max.fill")
+                            Text("12°")
+                            Text("18°")
+                        }
+                        HStack {
+                            Text("토")
+                            Image(systemName: "sun.max.fill")
+                            Text("10°")
+                            Text("16°")
+                        }
+                        HStack {
+                            Text("일")
+                            Image(systemName: "cloud.fill")
+                            Text("8°")
+                            Text("7°")
+                        }
+                        HStack {
+                            Text("월")
+                            Image(systemName: "cloud.fill")
+                            Text("9°")
+                            Text("16°")
+                        }
+                    }
+                }
+                
             }
         }
     }
