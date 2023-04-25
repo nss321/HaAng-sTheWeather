@@ -13,6 +13,7 @@ struct BlurStackView<Header: View, Content: View>: View {
     var contentView: Content
     
     @State var topOffset: CGFloat = 0
+    @State var bottomOffset: CGFloat = 0
     
     init(@ViewBuilder headerView: @escaping () -> Header,
          @ViewBuilder contentView: @escaping () -> Content) {
@@ -23,40 +24,44 @@ struct BlurStackView<Header: View, Content: View>: View {
     var body: some View {
         VStack(spacing: 0) {
             headerView
-                .frame(maxWidth: .infinity)
-                .background(.ultraThinMaterial)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .frame(maxHeight: 45)
+                .background(.ultraThinMaterial, in: IndivisualCorner(corners: bottomOffset < 35 ? .allCorners : [.topLeft, .topRight], radius: 12))
                 .zIndex(1)
             
             Divider()
             
             contentView
                 .frame(maxWidth: .infinity)
-                .background(.ultraThinMaterial)
-                .offset(y: topOffset >= 200 ? 0 : topOffset - 200)
+                .padding()
+                .background(.ultraThinMaterial, in: IndivisualCorner(corners: [.bottomLeft, .bottomRight], radius: 12))
+                .offset(y: topOffset >= 100 ? 0 : topOffset - 100)
                 .zIndex(0)
                 .clipped()
         }
-        .offset(y: topOffset >= 200 ? 0 : -(topOffset - 200))
+        .offset(y: topOffset >= 100 ? 0 : -(topOffset - 100))
         .background(
             GeometryReader(content: { geomtry ->
                 Color in
                 
                 let minY = geomtry.frame(in: .global).minY
+                let maxY = geomtry.frame(in: .global).maxY
                 
                 DispatchQueue.main.async {
                     topOffset = minY
+                    bottomOffset = maxY - 114
                 }
                 
                 return Color.clear
             })
         )
         .padding()
-        
     }
-    
-    struct BlurStackView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
+}
+
+struct BlurStackView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

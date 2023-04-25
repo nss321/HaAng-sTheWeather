@@ -40,17 +40,17 @@ struct ContentView: View {
                     }
                     Text("12°")
                         .font(.system(size: 80, weight: .thin))
+                        .opacity(setOpacity())
                     Text("청명함")
                         .font(.title3)
                         .opacity(setOpacity())
                     HStack {
                         Text("최고:18°")
                             .font(.title3)
-                            .opacity(setOpacity())
                         Text("최저:12°")
                             .font(.title3)
-                            .opacity(setOpacity())
                     }
+                    .opacity(setOpacity())
                 }
                 .offset(y: -offset+20)
                 .background(
@@ -141,17 +141,84 @@ struct ContentView: View {
                         }
                     }
                 }
+                BlurStackView{
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text("10일간의 일기예보")
+                    }
+                } contentView: {
+                    VStack {
+                        HStack {
+                            Text("오늘")
+                            Image(systemName: "sun.max.fill")
+                            Text("12°")
+                            Text("18°")
+                        }
+                        HStack {
+                            Text("오늘")
+                            Image(systemName: "sun.max.fill")
+                            Text("10°")
+                            Text("16°")
+                        }
+                        HStack {
+                            Text("일")
+                            Image(systemName: "cloud.fill")
+                            Text("8°")
+                            Text("7°")
+                        }
+                        HStack {
+                            Text("월")
+                            Image(systemName: "cloud.fill")
+                            Text("9°")
+                            Text("16°")
+                        }
+                    }
+                }
+                BlurStackView{
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text("10일간의 일기예보")
+                    }
+                } contentView: {
+                    VStack {
+                        HStack {
+                            Text("오늘")
+                            Image(systemName: "sun.max.fill")
+                            Text("12°")
+                            Text("18°")
+                        }
+                        HStack {
+                            Text("토")
+                            Image(systemName: "sun.max.fill")
+                            Text("10°")
+                            Text("16°")
+                        }
+                        HStack {
+                            Text("일")
+                            Image(systemName: "cloud.fill")
+                            Text("8°")
+                            Text("7°")
+                        }
+                        HStack {
+                            Text("월")
+                            Image(systemName: "cloud.fill")
+                            Text("9°")
+                            Text("16°")
+                        }
+                    }
+                }
             }
         }
     }
     
     func setOpacity() -> CGFloat {
-        if offset < 20 {
-            return offset / 20
+        if offset < 10 {
+            return offset / 10
         } else {
             return 1
         }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
