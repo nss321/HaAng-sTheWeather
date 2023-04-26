@@ -17,14 +17,14 @@ struct ForecastView: View {
         VStack {
             Text(time)
                 .fontWeight(.bold)
-            
             Image(systemName: imageName)
                 .font(.title3)
                 .symbolVariant(.fill)
-//                .symbolRenderingMode(.multicolor)
+                .symbolRenderingMode(.multicolor)
                 .frame(height: 30)
             Text("\(celcius)")
         }
+        .foregroundColor(.white)
     }
 }
 

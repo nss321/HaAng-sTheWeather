@@ -33,6 +33,7 @@ struct ContentView: View {
                             HStack {
                                 Text("12°")
                                     .font(.title3)
+                                
                                 Text("청명함")
                                     .font(.title3)
                             }
@@ -40,6 +41,7 @@ struct ContentView: View {
                     }
                     Text("12°")
                         .font(.system(size: 80, weight: .thin))
+                        .foregroundColor(.white)
                         .opacity(setOpacity())
                     Text("청명함")
                         .font(.title3)
@@ -52,6 +54,7 @@ struct ContentView: View {
                     }
                     .opacity(setOpacity())
                 }
+                .foregroundColor(.white)
                 .offset(y: -offset+20)
                 .background(
                     GeometryReader(content: { geomtry ->
@@ -69,6 +72,7 @@ struct ContentView: View {
                 
                 BlurStackView{
                     Text("현재 청명한 날씨입니다.")
+                        .foregroundColor(.white)
                 } contentView: {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 30) {
@@ -83,129 +87,69 @@ struct ContentView: View {
                             
                         }
                     }
-                    //                    HStack {
-                    //                        VStack {
-                    //                            Text("지금")
-                    //                            Image(systemName: "moon.stars.fill")
-                    //                            Text("12°")
-                    //                        }
-                    //                        VStack {
-                    //                            Text("오후 10시")
-                    //                            Image(systemName: "moon.stars.fill")
-                    //                            Text("12°")
-                    //                        }
-                    //                        VStack {
-                    //                            Text("오후 11시")
-                    //                            Image(systemName: "moon.stars.fill")
-                    //                            Text("12°")
-                    //                        }
-                    //                        VStack {
-                    //                            Text("오전 12시")
-                    //                            Image(systemName: "moon.stars.fill")
-                    //                            Text("12°")
-                    //                        }
-                    //                    }
                 }
                 
+                BlurStackView{
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text("10일간의 일기예보")
+                    }
+                    .foregroundColor(.white)
+                } contentView: {
+                    ForEach(forecast) { dayForcast in
+                        VStack {
+                            HStack {
+                                Text(dayForcast.day)
+                                Image(systemName: dayForcast.imageName)
+                                    .symbolRenderingMode(.multicolor)
+                                Text("\(dayForcast.lowTemperature.description)"+"°")
+                                
+                                ZStack {
+                                    Capsule()
+                                        .foregroundColor(.white)
+                                    GeometryReader { proxy in
+                                        Capsule()
+                                            .fill(.linearGradient(Gradient(colors: [.blue, .yellow]),
+                                                                  startPoint: .leading, endPoint: .trailing))
+                                            .frame(width: dayForcast.arrange)
+                                    }
+                                }
+                                Text("\(dayForcast.highTemperature.description)"+"°")
+                            }
+                        }
+                    }
+                }
                 
-                BlurStackView{
-                    HStack {
-                        Image(systemName: "calendar")
-                        Text("10일간의 일기예보")
-                    }
-                } contentView: {
-                    VStack {
+                HStack {
+                    BlurStackView {
                         HStack {
-                            Text("오늘")
-                            Image(systemName: "sun.max.fill")
-                            Text("12°")
-                            Text("18°")
+                            Image(systemName: "thermometer.medium")
+                            Text("체감 온도")
                         }
-                        HStack {
-                            Text("토")
-                            Image(systemName: "sun.max.fill")
-                            Text("10°")
-                            Text("16°")
-                        }
-                        HStack {
-                            Text("일")
-                            Image(systemName: "cloud.fill")
-                            Text("8°")
-                            Text("7°")
-                        }
-                        HStack {
-                            Text("월")
-                            Image(systemName: "cloud.fill")
-                            Text("9°")
-                            Text("16°")
+                    } contentView: {
+                        VStack(alignment: .leading){
+                            Text("6°")
+                                .font(.title)
+                            Spacer()
+                            Text("바람으로 인해 더 신선하게 느껴지겠습니다.")
                         }
                     }
-                }
-                BlurStackView{
-                    HStack {
-                        Image(systemName: "calendar")
-                        Text("10일간의 일기예보")
-                    }
-                } contentView: {
-                    VStack {
-                        HStack {
-                            Text("오늘")
-                            Image(systemName: "sun.max.fill")
-                            Text("12°")
-                            Text("18°")
+                    
+                    BlurStackView {
+                        HStack{
+                            Image(systemName: "humidity")
+                            Text("습도")
                         }
-                        HStack {
-                            Text("오늘")
-                            Image(systemName: "sun.max.fill")
-                            Text("10°")
-                            Text("16°")
-                        }
-                        HStack {
-                            Text("일")
-                            Image(systemName: "cloud.fill")
-                            Text("8°")
-                            Text("7°")
-                        }
-                        HStack {
-                            Text("월")
-                            Image(systemName: "cloud.fill")
-                            Text("9°")
-                            Text("16°")
+                    } contentView: {
+                        VStack(alignment: .leading){
+                            Text("70%")
+                                .font(.title)
+                            Spacer()
+                            Text("현재 이슬점이 2° 입니다.")
+
                         }
                     }
-                }
-                BlurStackView{
-                    HStack {
-                        Image(systemName: "calendar")
-                        Text("10일간의 일기예보")
-                    }
-                } contentView: {
-                    VStack {
-                        HStack {
-                            Text("오늘")
-                            Image(systemName: "sun.max.fill")
-                            Text("12°")
-                            Text("18°")
-                        }
-                        HStack {
-                            Text("토")
-                            Image(systemName: "sun.max.fill")
-                            Text("10°")
-                            Text("16°")
-                        }
-                        HStack {
-                            Text("일")
-                            Image(systemName: "cloud.fill")
-                            Text("8°")
-                            Text("7°")
-                        }
-                        HStack {
-                            Text("월")
-                            Image(systemName: "cloud.fill")
-                            Text("9°")
-                            Text("16°")
-                        }
-                    }
+                    
                 }
             }
         }
